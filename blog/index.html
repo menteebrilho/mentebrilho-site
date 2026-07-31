@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca | Mente &amp; Brilho</title>
+  <meta name="description" content="Artigos sobre educação emocional, relacionamentos abusivos, gaslighting e reconstrução feminina. Conteúdo para mulheres que querem nomear o que viveram." />
+  <meta property="og:title" content="Biblioteca | Mente &amp; Brilho" />
+  <meta property="og:description" content="Artigos sobre educação emocional, padrões de manipulação e reconstrução da confiança em si mesma." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mentebrilho.com.br/blog/" />
+  <link rel="canonical" href="https://mentebrilho.com.br/blog/" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --verde-escuro: #2d3a2e;
+      --verde-medio: #4a5e4b;
+      --rose: #c9a98a;
+      --creme: #f7f3ee;
+      --branco: #ffffff;
+      --texto: #2a2a2a;
+      --texto-suave: #5a5a5a;
+      --borda: #e8e0d5;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--creme);
+      color: var(--texto);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background-color: var(--branco);
+      border-bottom: 1px solid var(--borda);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--verde-escuro);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .logo em { font-style: italic; color: var(--rose); }
+
+    .header-cta {
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      padding: 10px 22px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover { background-color: var(--verde-medio); }
+
+    /* ── HERO DA BIBLIOTECA ── */
+    .library-hero {
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      padding: 80px 40px 72px;
+      text-align: center;
+    }
+
+    .library-hero .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .library-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--branco);
+      margin-bottom: 20px;
+    }
+
+    .library-hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .library-hero p {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── FILTROS DE CATEGORIA ── */
+    .filters {
+      border-bottom: 1px solid var(--borda);
+      background-color: var(--branco);
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 18px 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .filter-btn:hover { color: var(--verde-escuro); }
+    .filter-btn.active { color: var(--verde-escuro); border-bottom-color: var(--rose); }
+
+    /* ── GRID DE ARTIGOS ── */
+    .library-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 64px 40px 100px;
+    }
+
+    .grid-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .grid-header span {
+      font-size: 13px;
+      color: var(--texto-suave);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    /* ── CARD DE ARTIGO ── */
+    .article-card {
+      background-color: var(--branco);
+      border: 1px solid var(--borda);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 8px 32px rgba(45,58,46,0.10);
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      border-top: 3px solid var(--rose);
+      padding: 28px 28px 0;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--verde-escuro);
+      margin-bottom: 14px;
+    }
+
+    .card-excerpt {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--texto-suave);
+      font-weight: 300;
+    }
+
+    .card-bottom {
+      padding: 20px 28px 28px;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--borda);
+      margin-top: 24px;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--texto-suave);
+    }
+
+    .card-link {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde-medio);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-link::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .article-card:hover .card-link::after {
+      transform: translateX(4px);
+    }
+
+    /* ── ESTADO VAZIO ── */
+    .empty-state {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--texto-suave);
+      display: none;
+    }
+
+    .empty-state p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+    }
+
+    /* ── CTA STRIP ── */
+    .newsletter-strip {
+      background-color: var(--branco);
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      padding: 56px 40px;
+      text-align: center;
+    }
+
+    .newsletter-strip h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 500;
+      color: var(--verde-escuro);
+      margin-bottom: 12px;
+    }
+
+    .newsletter-strip p {
+      font-size: 15px;
+      color: var(--texto-suave);
+      margin-bottom: 28px;
+    }
+
+    .newsletter-strip a {
+      display: inline-block;
+      background-color: var(--verde-escuro);
+      color: var(--branco);
+      padding: 14px 32px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .newsletter-strip a:hover { background-color: var(--verde-medio); }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: var(--verde-escuro);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 13px;
+    }
+
+    footer a { color: var(--rose); text-decoration: none; }
+
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      color: var(--branco);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 640px) {
+      header { padding: 16px 20px; }
+      .library-hero { padding: 56px 24px 48px; }
+      .filters { padding: 0 20px; }
+      .library-grid { padding: 40px 20px 64px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .newsletter-strip { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/" class="logo">Mente <em>&amp;</em> Brilho</a>
+    <a href="https://wa.me/5511987295316" target="_blank" rel="noopener" class="header-cta">Conversar com a Adilda</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="library-hero">
+    <span class="eyebrow">Educação Emocional Feminina</span>
+    <h1>Biblioteca<br><em>Mente &amp; Brilho</em></h1>
+    <p>Conteúdo para mulheres que querem nomear o que viveram, recuperar a confiança na própria percepção e começar a voltar para si.</p>
+  </section>
+
+  <!-- FILTROS -->
+  <nav class="filters" aria-label="Filtrar por categoria">
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="relacionamentos">Relacionamentos</button>
+    <button class="filter-btn" data-filter="gaslighting">Gaslighting</button>
+    <button class="filter-btn" data-filter="autoestima">Autoestima</button>
+    <button class="filter-btn" data-filter="reconstrucao">Reconstrução</button>
+  </nav>
+
+  <!-- GRID -->
+  <section class="library-grid">
+    <div class="grid-header">
+      <span id="article-count">1 artigo publicado</span>
+    </div>
+
+    <div class="articles-grid" id="articles-grid">
+
+      <!-- ARTIGO 1 — adicionar novos artigos aqui, copiando este bloco -->
+      <a href="/blog/voce-esta-em-um-relacionamento-abusivo/"
+         class="article-card"
+         data-category="relacionamentos gaslighting">
+        <div class="card-top">
+          <span class="card-tag">Educação Emocional · Relacionamentos</span>
+          <h2 class="card-title">Você Está em um Relacionamento Abusivo? Reconheça os Sinais Antes que Fique Mais Difícil</h2>
+          <p class="card-excerpt">O abuso emocional não começa com uma agressão. Começa com uma confusão. E é essa confusão que faz você duvidar se o que está vivendo é tão grave quanto parece.</p>
+        </div>
+        <div class="card-bottom">
+          <span class="card-meta">Leitura: 7 min</span>
+          <span class="card-link">Ler artigo</span>
+        </div>
+      </a>
+
+      <!-- PRÓXIMOS ARTIGOS: copie e cole o bloco acima, ajustando href, category, tag, título e excerpt -->
+
+    </div>
+
+    <div class="empty-state" id="empty-state">
+      <p>Nenhum artigo nesta categoria ainda.</p>
+    </div>
+  </section>
+
+  <!-- CTA QUESTIONÁRIO -->
+  <section class="newsletter-strip">
+    <h2>Antes de continuar lendo, respire.</h2>
+    <p>Se algo aqui está fazendo sentido, existe um primeiro passo disponível para você agora.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScouhkJkhkPJRYMCopEMC54F1OjN2F9yNWqzIG_DfUhiwUhvw/viewform"
+       target="_blank" rel="noopener">Responder ao questionário gratuito</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Mente <em style="font-style:italic;color:#c9a98a">&amp;</em> Brilho</span>
+    <p>&amp;copy; 2025 Mente &amp; Brilho &middot; Adilda Souza</p>
+    <p style="margin-top:8px"><a href="/">Início</a> &middot; <a href="/blog/">Biblioteca</a></p>
+  </footer>
+
+  <script>
+    // Filtro de categorias
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.article-card');
+    const count = document.getElementById('article-count');
+    const empty = document.getElementById('empty-state');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        let visible = 0;
+
+        cards.forEach(card => {
+          const cats = card.dataset.category || '';
+          const show = filter === 'todos' || cats.includes(filter);
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+
+        count.textContent = visible + (visible === 1 ? ' artigo publicado' : ' artigos publicados');
+        empty.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+  </script>
+
+</body>
+  </html>
